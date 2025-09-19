@@ -22,5 +22,4 @@ spec:
     volumeMounts:
     - mountPath: /etc/foo
       name: busybox-vol
-    resources: {}
 status: {}
