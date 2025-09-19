@@ -9,6 +9,10 @@ spec:
   volumes:
   - name: busybox-vol
     emptyDir: {}
+  tolerations:
+  - key: "node-role.kubernetes.io/control-plane"
+    operator: "Exists"
+    effect: "NoSchedule"
   containers:
   - image: busybox
     name: busybox1
@@ -23,5 +27,6 @@ spec:
     - mountPath: /etc/foo
       name: busybox-vol
 status: {}
+
 
 
