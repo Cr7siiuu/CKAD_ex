@@ -1,37 +1,26 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    app: busybox
+    run: busybox
   name: busybox
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: busybox
-  strategy: {}
-  template:
-    metadata:
-      creationTimestamp: null
-      labels:
-        app: busybox
-    spec:
-      volumes:
-      - name: busybox-vol
-        emptyDir:
-      containers:
-      - image: busybox
-        name: busybox1
-        command: ['/bin/sh','-c','sleep 3600']
-        volumeMounts:
-          - mountPath: /etc/foo
-            name: busybox-vol
-      - image: busybox
-        name: busybox2
-        command: ['/bin/sh','-c','sleep 3600']
-        volumeMounts:
-          - mountPath: /etc/foo
-            name: busybox-vol
-        resources: {}
+  volumes:
+  - name: busybox-vol
+    emptyDir:
+  containers:
+  - image: busybox
+    name: busybox1
+    command: ['/bin/sh','-c','sleep 3600']
+    volumeMounts:
+    - mountPath: /etc/foo
+      name: busybox-vol
+  - image: busybox
+    name: busybox2
+    command: ['/bin/sh','-c','sleep 3600']
+    volumeMounts:
+    - mountPath: /etc/foo
+      name: busybox-vol
+    resources: {}
 status: {}
