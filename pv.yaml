@@ -15,7 +15,8 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /etc/fo
+    path: /etc/foo
     server: 172.17.0.2
 
     
+
