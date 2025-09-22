@@ -11,12 +11,9 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: normal
-  mountOptions:
-    - hard
-    - nfsvers=4.1
-  nfs:
+  hostPath:
     path: /etc/foo
-    server: 172.17.0.2
 
     
+
 
