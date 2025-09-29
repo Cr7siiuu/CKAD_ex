@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels:
+    app: app-green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-green
+  template:
+    metadata:
+      labels:
+        app: app-green
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        
