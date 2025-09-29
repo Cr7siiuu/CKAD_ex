@@ -1,18 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: app-deployment-new
   labels:
-    app: app-blue
+    app: app
+    version: new
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app-blue
+      app: app
+      version: new
   template:
     metadata:
       labels:
-        app: app-blue
+        app: app
+        version: new
     spec:
       containers:
       - name: nginx
