@@ -5,7 +5,7 @@ metadata:
   labels:
     app: app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: app
@@ -21,4 +21,9 @@ spec:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
         effect: "NoSchedule"
+      strategy:
+        type: RollingUpdate
+        RollingUpdate: 
+          maxUnavailable: 1
+          maxSurge: 1
         
