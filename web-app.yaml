@@ -17,6 +17,10 @@ spec:
         app: web-app
         tiers: frontend
     spec:
+      tolerations:
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
       containers:
       - name: nginx
         image: nginx:latest
