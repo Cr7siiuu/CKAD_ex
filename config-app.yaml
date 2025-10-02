@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: config-app
+spec:
+  containers:
+    - name: demo
+      image: nginx
+      env:
+        # Define the environment variable
+        - name: APP_MODE # Notice that the case is different here
+                                     # from the key name in the ConfigMap.
+          valueFrom:
+            configMapKeyRef:
+              name: app-config           # The ConfigMap this value comes from.
+              key: APP_MODE # The key to fetch.
