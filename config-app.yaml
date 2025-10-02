@@ -3,6 +3,10 @@ kind: Pod
 metadata:
   name: config-app
 spec:
+  tolerations:
+    - key: "node-role.kubernetes.io/control-plane"
+      operator: "Exists"
+      effect: "NoSchedule"
   containers:
     - name: demo
       image: nginx
