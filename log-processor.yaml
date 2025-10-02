@@ -21,7 +21,7 @@ spec:
       containers:
         - name: alpine
           image: nginx:alpine
-      initContainers:
+      containers:
         - name: busybox
           image: busybox
           command: ['sh', '-c', 'tail -F  /var/log/nginx/access.log']
