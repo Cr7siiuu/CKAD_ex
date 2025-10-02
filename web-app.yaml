@@ -1,28 +1,17 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: web-app
-  labels:
-    app: nginx
-    tiers: frontend
 spec:
-  replicas: 5
-  selector:
-    matchLabels:
-      app: web-app
-      tiers: frontend
-  template:
-    metadata:
-      labels:
-        app: web-app
-        tiers: frontend
-    spec:
-      tolerations:
-      - key: "node-role.kubernetes.io/control-plane"
-        operator: "Exists"
-        effect: "NoSchedule"
-      containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: secret
+      mountPath: "/etc/secrets"
+      readOnly: true
+  volumes:
+  - name: secret
+    secret:
+      secretName: db-credentials
+      optional: true
