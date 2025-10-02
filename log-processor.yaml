@@ -20,7 +20,6 @@ spec:
       initContainers:
         - name: busybox
           image: busybox
-          restartPolicy: Always
           command: ['sh', '-c', 'tail -F  /var/log/nginx/access.log']
           volumeMounts:
             - name: data
