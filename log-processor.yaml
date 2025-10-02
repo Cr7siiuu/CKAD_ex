@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-processor
+  labels:
+    app: log-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-app
+  template:
+    metadata:
+      labels:
+        app: log-app
+    spec:
+      containers:
+        - name: alpine
+          image: nginx:alpine
+      initContainers:
+        - name: busybox
+          image: busybox
+          restartPolicy: Always
+          command: ['sh', '-c', 'tail -F  /var/log/nginx/access.log']
+          volumeMounts:
+            - name: data
+              mountPath: var/log/nginx/
+      volumes:
+        - name: data
+          emptyDir: {}
