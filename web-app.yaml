@@ -26,7 +26,7 @@ spec:
           containerPort: 8080
         readinessProbe:
           httpGet:
-            path: /health
+            path: /healthz
             port: readiness-port
           failureThreshold: 30
           periodSeconds: 5
