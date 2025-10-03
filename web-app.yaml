@@ -22,6 +22,7 @@ spec:
       - name: nginx
         image: nginx
         ports:
+        - name: readiness-port
           containerPort: 8080
         readinessProbe:
           exec:
