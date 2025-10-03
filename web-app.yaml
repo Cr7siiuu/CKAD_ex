@@ -26,8 +26,8 @@ spec:
           containerPort: 8080
         readinessProbe:
           exec:
-          command:
-          - cat
-          - /health
+            command:
+            - cat
+            - /health
           initialDelaySeconds: 5
           periodSeconds: 5
