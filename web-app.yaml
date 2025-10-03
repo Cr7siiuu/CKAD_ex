@@ -19,8 +19,8 @@ spec:
         operator: "Exists"
         effect: "NoSchedule"
       containers:
-      - name: nginx
-        image: nginx
+      - name: app
+        image: custom-app:1.0
         ports:
         - name: readiness-port
           containerPort: 8080
