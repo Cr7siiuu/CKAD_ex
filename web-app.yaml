@@ -25,9 +25,8 @@ spec:
         - name: readiness-port
           containerPort: 8080
         readinessProbe:
-          exec:
-            command:
-            - cat
-            - /health
-          initialDelaySeconds: 5
+          httpGet:
+            path: /health
+            port: readiness-port
+          failureThreshold: 30
           periodSeconds: 5
